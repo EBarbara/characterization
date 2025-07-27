@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: characterization
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn characterization.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: characterization.settings
+      - key: PYTHON_VERSION
+        value: 3.13.5
